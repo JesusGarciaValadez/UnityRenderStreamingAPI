@@ -2,16 +2,17 @@
   "name": "webserver",
   "version": "2.1.0",
   "main": "api/api.js",
-  "private": true,
+  "description": "",
+  "keywords": "API, Unity Render Streaming, App",
+  "license": "MIT",
   "scripts": {
-    "prestart": "npm install",
+    "dev": "ts-node src/api.ts",
     "tsjs": "tsc -p ./tsconfig.json",
-    "test": "jest --env=node --colors --coverage ./test",
-    "newman": "newman run ./test/renderstreaming.postman_collection.json",
     "start": "node ./api/api.js",
     "build": "netlify-lambda build api",
-    "dev": "ts-node src/api.ts",
-    "lint": "eslint ./src/**/*.ts test/**/*.ts"
+    "lint": "eslint ./src/**/*.ts test/**/*.ts",
+    "test": "jest --env=node --colors --coverage ./test",
+    "newman": "newman run ./test/renderstreaming.postman_collection.json"
   },
   "dependencies": {
     "@types/express": "^4.16.1",
@@ -32,7 +33,7 @@
     "@typescript-eslint/parser": "^2.3.3",
     "eslint": "^6.5.1",
     "jest": "^24.8.0",
-    "netlify-lambda": "^2.0.1",
+    "netlify-lambda": "^1.6.3",
     "newman": "^4.5.5",
     "pkg": "^4.4.0",
     "ts-jest": "^24.0.2",
