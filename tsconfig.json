@@ -3,7 +3,7 @@
     "src/**/*"
   ],
   "exclude": [
-    "../UnityRenderStreamingWebApp/node_modules", "**/*.spec.ts"],
+    "./node_modules", "**/*.spec.ts"],
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",

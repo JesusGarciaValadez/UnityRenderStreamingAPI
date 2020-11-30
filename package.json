@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "prestart": "npm install",
-    "trans": "tsc -p ./tsconfig.json",
+    "tsjs": "tsc -p ./tsconfig.json",
     "test": "jest --env=node --colors --coverage ./test",
     "newman": "newman run ./test/renderstreaming.postman_collection.json",
     "start": "node ./api/index.js",
