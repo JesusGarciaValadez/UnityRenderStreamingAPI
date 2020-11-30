@@ -11,8 +11,8 @@ export const createServer = (config): express.Application => {
 
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  app.get('/.netlify/functions/api/protocol', (req, res) => res.json({useWebSocket: config.websocket}));
-  app.use('/.netlify/functions/api/signaling', signaling);
+  app.get('/.netlify/func/api/protocol', (req, res) => res.json({useWebSocket: config.websocket}));
+  app.use('/.netlify/func/api/signaling', signaling);
 
   module.exports = app;
   module.exports.handler = serverless(app);
