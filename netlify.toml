@@ -1,0 +1,4 @@
+[build]
+  # This will be run the site build
+  command = "npm install && npm run build"
+  functions = "functions"
