@@ -3,10 +3,9 @@ import * as https from 'https';
 import { Server } from 'http';
 import * as fs from 'fs';
 import * as os from 'os';
+import { createServer } from './server';
 import { AddressInfo } from 'net';
 import WSSignaling from './websocket';
-
-const server = require('./server');
 
 export interface Options {
   secure?: boolean;
@@ -50,7 +49,7 @@ export class RenderStreaming {
 
   constructor(options: Options) {
     this.options = options;
-    this.app = server.createServer(this.options);
+    this.app = createServer(this.options);
     if (this.options.secure) {
       this.server = https.createServer({
         key: fs.readFileSync(options.keyfile),
