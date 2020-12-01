@@ -4,7 +4,6 @@ import signaling from './signaling';
 
 export const createServer = (config): express.Application => {
   const app: express.Application = express();
-  // const signal = require('./signaling');
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.get('/.netlify/api/protocol', (req, res) => res.json({useWebSocket: config.websocket}));

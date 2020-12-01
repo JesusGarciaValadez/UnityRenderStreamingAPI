@@ -1,8 +1,8 @@
 import { Request, Response, Router } from 'express';
 import { v4 as uuid } from 'uuid';
-import Offer from './class/offer';
-import Answer from './class/answer';
-import Candidate from './class/candidate';
+import Offer from '../class/offer';
+import Answer from '../class/answer';
+import Candidate from '../class/candidate';
 
 const express = require('express');
 

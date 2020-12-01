@@ -3,9 +3,9 @@ import * as https from 'https';
 import { Server } from 'http';
 import * as fs from 'fs';
 import * as os from 'os';
-import { createServer } from './server';
+import { createServer } from './routes/server';
 import { AddressInfo } from 'net';
-import WSSignaling from './websocket';
+import WSSignaling from './class/websocket';
 
 export interface Options {
   secure?: boolean;

@@ -1,9 +1,9 @@
 import * as websocket from "ws";
 import { Server } from 'http';
 import { v4 as uuid } from 'uuid';
-import Offer from './class/offer';
-import Answer from './class/answer';
-import Candidate from './class/candidate';
+import Offer from './offer';
+import Answer from './answer';
+import Candidate from './candidate';
 
 // [{sessonId:[connectionId,...]}]
 const clients: Map<WebSocket, Set<string>> = new Map<WebSocket, Set<string>>();
