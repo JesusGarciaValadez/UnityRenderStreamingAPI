@@ -9,8 +9,8 @@
     "prestart": "npm install",
     "dev": "ts-node ./src/index.ts",
     "tsjs": "tsc -p ./tsconfig.json",
-    "start": "node ./func/index.js",
-    "build": "netlify-lambda build api",
+    "start": "node ./functions/index.js",
+    "build": "netlify-lambda build build",
     "lint": "eslint ./src/**/*.ts test/**/*.ts",
     "test": "jest --env=node --colors --coverage ./test",
     "newman": "newman run ./test/renderstreaming.postman_collection.json"
@@ -30,6 +30,7 @@
     "@typescript-eslint/parser": "^2.3.3",
     "eslint": "^6.5.1",
     "jest": "^24.8.0",
+    "netlify-lambda": "^2.0.1",
     "newman": "^4.5.5",
     "pkg": "^4.4.0",
     "ts-jest": "^24.0.2",
