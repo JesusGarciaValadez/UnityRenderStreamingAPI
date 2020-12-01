@@ -6,7 +6,7 @@
     "target": "es5",
     "lib": ["dom","es5"],
     "sourceMap": false,
-    "outDir":"build",
+    "outDir":"func",
     "rootDir":"src"
   }
 }

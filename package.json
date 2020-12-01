@@ -9,7 +9,7 @@
     "prestart": "npm install",
     "dev": "ts-node ./src/index.ts",
     "tsjs": "tsc -p ./tsconfig.json",
-    "start": "node ./build/index.js",
+    "start": "node ./func/index.js",
     "build": "netlify-lambda build api",
     "lint": "eslint ./src/**/*.ts test/**/*.ts",
     "test": "jest --env=node --colors --coverage ./test",
