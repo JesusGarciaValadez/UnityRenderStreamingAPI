@@ -2,21 +2,13 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import signaling from './signaling';
 
-const serverless = require('serverless-http');
-
-import { log, LogLevel } from './log';
-
-const createServer = (config): express.Application => {
+export const createServer = (config): express.Application => {
   const app: express.Application = express();
-
+  // const signal = require('./signaling');
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  app.get('/.netlify/func/api/protocol', (req, res) => res.json({useWebSocket: config.websocket}));
-  app.use('/.netlify/func/api/signaling', signaling);
+  app.get('/protocol', (req, res) => res.json({useWebSocket: config.websocket}));
+  app.use('/signaling', signaling);
 
   return app;
 };
-
-
-module.exports.createServer = createServer;
-module.exports.handler = serverless(createServer);
