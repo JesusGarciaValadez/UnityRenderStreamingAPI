@@ -1,4 +1,4 @@
 [build]
   # This will be run the site build
-  command = "npm install && npm run build"
+  command = "npm run prestart && npm run tsjs && npm start"
   functions = "func"
