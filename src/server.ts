@@ -7,8 +7,8 @@ export const createServer = (config): express.Application => {
   // const signal = require('./signaling');
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  app.get('/.netlify/functions/build/protocol', (req, res) => res.json({useWebSocket: config.websocket}));
-  app.use('/.netlify/functions/build/signaling', signaling);
+  app.get('/.netlify/api/protocol', (req, res) => res.json({useWebSocket: config.websocket}));
+  app.use('/.netlify/api/signaling', signaling);
 
   return app;
 };
