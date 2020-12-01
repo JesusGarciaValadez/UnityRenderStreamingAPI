@@ -7,6 +7,8 @@ import { createServer } from './routes/server';
 import { AddressInfo } from 'net';
 import WSSignaling from './class/websocket';
 
+const serverless = require('serverless-http');
+
 export interface Options {
   secure?: boolean;
   port?: number;
@@ -74,9 +76,9 @@ export class RenderStreaming {
     if (this.options.websocket) {
       console.log(`start websocket signaling server ws://${this.getIPAddress()[0]}`)
       //Start Websocket Signaling server
-      new WSSignaling(this.server);
+      new WSSignaling(serverless(this.server));
     }
-  }
+  }s
 
   getIPAddress(): string[] {
     const interfaces = os.networkInterfaces();
@@ -93,4 +95,8 @@ export class RenderStreaming {
   }
 }
 
-RenderStreaming.run(process.argv);
+export async function handler() {
+  return (() => {
+    RenderStreaming.run(process.argv)
+  })();
+}

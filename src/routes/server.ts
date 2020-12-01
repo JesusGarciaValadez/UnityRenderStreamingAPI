@@ -6,8 +6,14 @@ export const createServer = (config): express.Application => {
   const app: express.Application = express();
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  app.get('/.netlify/api/protocol', (req, res) => res.json({useWebSocket: config.websocket}));
-  app.use('/.netlify/api/signaling', signaling);
+  app.get('/protocol', (req, res) => res.json({useWebSocket: config.websocket}));
+  app.use('/signaling', signaling);
+  app.use(express.static('/../public/stylesheets'));
+  app.use(express.static('/../public/scripts'));
+  app.use('/images', express.static('/../public/images'));
+  app.get('/', (req, res) => {
+    res.sendFile(`index.html`, { root: `./${__dirname}` });
+  });
 
   return app;
 };
