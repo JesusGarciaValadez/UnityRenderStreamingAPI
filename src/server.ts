@@ -6,7 +6,7 @@ const serverless = require('serverless-http');
 
 import { log, LogLevel } from './log';
 
-export const createServer = (config): express.Application => {
+const createServer = (config): express.Application => {
   const app: express.Application = express();
 
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,8 +14,9 @@ export const createServer = (config): express.Application => {
   app.get('/.netlify/func/api/protocol', (req, res) => res.json({useWebSocket: config.websocket}));
   app.use('/.netlify/func/api/signaling', signaling);
 
-  module.exports = app;
-  module.exports.handler = serverless(app);
-
   return app;
 };
+
+
+module.exports.createServer = createServer;
+module.exports.handler = serverless(createServer);

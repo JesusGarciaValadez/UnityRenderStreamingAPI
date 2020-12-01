@@ -34,7 +34,6 @@ function getOrCreateConnectionIds(sessionId): Set<string> {
 }
 
 router.use((req: Request, res: Response, next) => {
-  console.log();
   if (req.url === '/') {
     next();
     return;
