@@ -16,7 +16,7 @@ export default class Signaling extends EventTarget {
   };
 
   url(method) {
-    return location.protocol + '//' + location.host + location.pathname + '.netlify/functions/index/signaling/' + method;
+    return location.protocol + '//' + location.host + location.pathname + 'signaling/' + method;
   };
 
   async start() {

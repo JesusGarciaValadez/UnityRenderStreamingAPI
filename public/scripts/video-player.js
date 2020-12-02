@@ -59,7 +59,7 @@ export class VideoPlayer {
     }
 
     // Decide Signaling Protocol
-    const protocolEndPoint = location.protocol + '//' + location.host + location.pathname + '.netlify/functions/index/protocol';
+    const protocolEndPoint = location.protocol + '//' + location.host + location.pathname + 'protocol';
     const createResponse = await fetch(protocolEndPoint);
     const res = await createResponse.json();
 

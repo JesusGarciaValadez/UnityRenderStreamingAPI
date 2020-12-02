@@ -35,7 +35,7 @@ export class SendVideo {
 
         this.remoteStram.onaddtrack = async (e) => await _this.remoteVideo.play();
 
-        const protocolEndPoint = location.protocol + '//' + location.host + location.pathname + '.netlify/functions/index/protocol';
+        const protocolEndPoint = location.protocol + '//' + location.host + location.pathname + 'protocol';
         const createResponse = await fetch(protocolEndPoint);
         const res = await createResponse.json();
 
