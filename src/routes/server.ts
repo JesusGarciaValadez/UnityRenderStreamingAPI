@@ -6,10 +6,13 @@ import signaling from './signaling';
 
 import { log, LogLevel } from '../helpers/log';
 
+const cors = require('cors')
+
 export const createServer = (config): express.Application => {
   const app: express.Application = express();
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+  app.use(cors());
   app.get('/protocol', (req, res) => res.json({useWebSocket: config.websocket}));
   app.use('/signaling', signaling);
   app.use(express.static(path.join(__dirname, '/../../public/stylesheets')));
