@@ -5,7 +5,9 @@ import Offer from './offer';
 import Answer from './answer';
 import Candidate from './candidate';
 
-// [{sessonId:[connectionId,...]}]
+import { log, LogLevel } from '../helpers/log';
+
+// [{sessionId:[connectionId,...]}]
 const clients: Map<WebSocket, Set<string>> = new Map<WebSocket, Set<string>>();
 
 // [{connectionId:[sessionId1, sessionId2]}]
@@ -20,13 +22,13 @@ const answers: Map<string, Answer> = new Map<string, Answer>();
 // [{sessionId:[{connectionId:Candidate},...]}]
 const candidates: Map<WebSocket, Map<string, Candidate[]>> = new Map<WebSocket, Map<string, Candidate[]>>();
 
-function getOrCreateConnectionIds(settion: WebSocket): Set<string> {
+function getOrCreateConnectionIds(session: WebSocket): Set<string> {
     let connectionIds = null;
-    if (!clients.has(settion)) {
+    if (!clients.has(session)) {
         connectionIds = new Set<string>();
-        clients.set(settion, connectionIds);
+        clients.set(session, connectionIds);
     }
-    connectionIds = clients.get(settion);
+    connectionIds = clients.get(session);
     return connectionIds;
 }
 
@@ -39,7 +41,7 @@ export default class WSSignaling {
         this.wss = new websocket.Server({ server });
 
         this.wss.on('connection', (ws: WebSocket) => {
-
+            console.log(ws)
             clients.set(ws, new Set<string>());
 
             ws.onclose = (_event: CloseEvent) => {
@@ -53,6 +55,7 @@ export default class WSSignaling {
                 // from: from connection id
                 // to: to connection id
                 // data: any message data structure
+                log(LogLevel.warn, event);
 
                 const msg = JSON.parse(event.data);
                 if (!msg || !this) {
@@ -87,6 +90,7 @@ export default class WSSignaling {
     private onConnect(ws: WebSocket){
         const connectionId: string = uuid();
         const connectionIds = getOrCreateConnectionIds(ws);
+        log(LogLevel.warn, connectionIds);
         connectionIds.add(connectionId);
         ws.send(JSON.stringify({type:"connect", connectionId:connectionId}));
     }
