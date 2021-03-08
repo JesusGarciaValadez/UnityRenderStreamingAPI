@@ -76,7 +76,7 @@ export class RenderStreaming {
       //Start Websocket Signaling server
       new WSSignaling(this.server);
     }
-  }s
+  }
 
   getIPAddress(): string[] {
     const interfaces = os.networkInterfaces();
